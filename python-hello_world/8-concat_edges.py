@@ -2,4 +2,4 @@
 a = "Python is an interpreted, interactive, object-oriented programming "
 b = "language that combines remarkable power with very clear syntax"
 str = a + b
-print(str[39:66] + str[75:79] + str[:6])
+print(str[39:66] + str[70:75] + str[:6])
