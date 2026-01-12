@@ -4,31 +4,30 @@ Lists all states from the database hbtn_0e_0_usa.
 Results are sorted by states.id in ascending order.
 """
 
-import sys
 import MySQLdb
+import sys
 
 
-def main():
-    """Connects to MySQL and prints all states ordered by id."""
+if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
-    db_name = sys.argv[3]
+    database = sys.argv[3]
 
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=username,
         passwd=password,
-        db=db_name
+        db=database,
+        charset="utf8"
     )
+
     cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id ASC;")
-    for row in cur.fetchall():
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
+
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
 
     cur.close()
     db.close()
-
-
-if __name__ == "__main__":
-    main()
